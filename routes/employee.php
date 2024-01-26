@@ -1,15 +1,28 @@
 <?php
 
-use App\Http\Controllers\User\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\User\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\User\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\User\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\User\Auth\NewPasswordController;
-use App\Http\Controllers\User\Auth\PasswordController;
-use App\Http\Controllers\User\Auth\PasswordResetLinkController;
-use App\Http\Controllers\User\Auth\RegisteredUserController;
-use App\Http\Controllers\User\Auth\VerifyEmailController;
+use App\Http\Controllers\Employee\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Employee\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Employee\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Employee\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Employee\Auth\NewPasswordController;
+use App\Http\Controllers\Employee\Auth\PasswordController;
+use App\Http\Controllers\Employee\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Employee\Auth\RegisteredUserController;
+use App\Http\Controllers\Employee\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth:employees', 'verified'])->name('dashboard');
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -35,7 +48,7 @@ Route::middleware('guest')->group(function () {
         ->name('password.store');
 });
 
-Route::middleware('auth:users')->group(function () {
+Route::middleware('auth:employees')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 

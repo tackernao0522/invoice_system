@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+
 return [
 
     /*
@@ -14,7 +16,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'users',
         'passwords' => 'users',
     ],
 
@@ -40,6 +42,21 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'users' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'employees' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ]
     ],
 
     /*
@@ -63,6 +80,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Employee::class,
+        ],
+
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Modles\Admin::class,
         ],
 
         // 'users' => [
@@ -90,6 +117,20 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'employees' => [
+            'provider' => 'employees',
+            'table' => 'employee_password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'admin' => [
+            'provider' => 'admin',
+            'table' => 'admin_password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
