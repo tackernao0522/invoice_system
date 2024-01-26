@@ -10,18 +10,20 @@ use App\Http\Controllers\Employee\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Employee\Auth\RegisteredUserController;
 use App\Http\Controllers\Employee\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+    return Inertia::render('Employee/Welcome', [
+        'canLogin' => Route::has('employee.login'),
+        'canRegister' => Route::has('employee.register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Employee/Dashboard');
 })->middleware(['auth:employees', 'verified'])->name('dashboard');
 
 Route::middleware('guest')->group(function () {

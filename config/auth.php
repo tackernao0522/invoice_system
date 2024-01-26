@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\App;
+// use Illuminate\Support\Facades\App;
 
 return [
 
@@ -89,7 +89,7 @@ return [
 
         'admin' => [
             'driver' => 'eloquent',
-            'model' => App\Modles\Admin::class,
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [

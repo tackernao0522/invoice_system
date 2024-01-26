@@ -10,9 +10,11 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Admin/Welcome', [
         'canLogin' => Route::has('admin.login'),
         'canRegister' => Route::has('admin.register'),
         'laravelVersion' => Application::VERSION,
@@ -21,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Admin/Dashboard');
 })->middleware(['auth:admin', 'verified'])->name('dashboard');
 
 Route::middleware('guest')->group(function () {
