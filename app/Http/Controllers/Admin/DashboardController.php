@@ -18,10 +18,10 @@ class DashboardController extends Controller
     public function index()
     {
         // 未払いの請求書の一覧を取得
-        $unpaidInvoices = Invoice::where('status', 'unpaid')->paginate(50);
+        $unpaidInvoices = Invoice::where('status', 'unpaid')->get();
 
         // 期限切れの見積書の一覧を取得
-        $expiredEstimates = Estimate::whereDate('expiration_date', '<', now())->paginate(50);
+        $expiredEstimates = Estimate::whereDate('expiration_date', '<', now())->get();
 
         // dd($unpaidInvoices, $expiredEstimates);
 
