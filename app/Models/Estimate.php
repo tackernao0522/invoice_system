@@ -13,6 +13,7 @@ class Estimate extends Model
         'customer_id',
         'amount',
         'expiration_date',
+        'status',
     ];
 
     public function customer()

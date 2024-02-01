@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->decimal('amount', 10, 2);
             $table->date('expiration_date');
+            $table->enum('status', ['draft', 'sent', 'accepted', 'rejected'])->default('draft');
             $table->timestamps();
         });
     }
