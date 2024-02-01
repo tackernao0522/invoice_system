@@ -4,11 +4,13 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="管理者向けコントロールパネル
+" />
 
     <AdminAuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">管理者向けコントロールパネル
+            </h2>
         </template>
 
         <div class="py-12">
