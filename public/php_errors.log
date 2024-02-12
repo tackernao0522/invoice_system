@@ -1,0 +1,1 @@
+[02-Feb-2024 15:49:31 Asia/Tokyo] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /Applications/MAMP/htdocs/invoice_system/vendor/laravel/framework/src/Illuminate/Collections/Arr.php on line 308

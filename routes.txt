@@ -13,8 +13,10 @@
   POST      admin/confirm-password ................................................................................................................................... admin. › Admin\Auth\ConfirmablePasswordController@store
   GET|HEAD  admin/dashboard ................................................................................................................................................ admin.dashboard › Admin\DashboardController@index
   POST      admin/email/verification-notification ......................................................................................... admin.verification.send › Admin\Auth\EmailVerificationNotificationController@store
+  GET|HEAD  admin/estimates ........................................................................................................................................... admin.estimates.index › Admin\EstimateController@index
   GET|HEAD  admin/forgot-password ..................................................................................................................... admin.password.request › Admin\Auth\PasswordResetLinkController@create
   POST      admin/forgot-password ........................................................................................................................ admin.password.email › Admin\Auth\PasswordResetLinkController@store
+  GET|HEAD  admin/invoices .............................................................................................................................................. admin.invoices.index › Admin\InvoiceController@index
   GET|HEAD  admin/login ....................................................................................................................................... admin.login › Admin\Auth\AuthenticatedSessionController@create
   POST      admin/login ............................................................................................................................................. admin. › Admin\Auth\AuthenticatedSessionController@store
   POST      admin/logout .................................................................................................................................... admin.logout › Admin\Auth\AuthenticatedSessionController@destroy
@@ -64,5 +66,5 @@
   GET|HEAD  verify-email .............................................................................................................................. user.verification.notice › User\Auth\EmailVerificationPromptController
   GET|HEAD  verify-email/{id}/{hash} .............................................................................................................................. user.verification.verify › User\Auth\VerifyEmailController
 
-                                                                                                                                                                                                           Showing [64] routes
+                                                                                                                                                                                                           Showing [66] routes
 

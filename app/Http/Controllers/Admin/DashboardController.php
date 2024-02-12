@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Estimate;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
@@ -17,20 +18,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // 未払いの請求書の一覧を取得
-        $unpaidInvoices = Invoice::where('status', 'unpaid')->get();
-
-        // 期限切れの見積書の一覧を取得
-        $expiredEstimates = Estimate::whereDate('expiration_date', '<', now())->get();
-
-        // dd($unpaidInvoices, $expiredEstimates);
-
-        // 他のトイ系情報や通知などの取得ロジックを追加
-
-        return Inertia::render('Admin/Dashboard', [
-            'unpaidInvoices' => $unpaidInvoices,
-            'expiredEstimates' => $expiredEstimates,
-        ]);
+        return Inertia::render('Admin/Dashboard');
     }
 
     /**
