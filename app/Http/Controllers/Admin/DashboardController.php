@@ -17,8 +17,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $statistics = Statistic::all();
-        $notifications = Notification::all();
+        $statistics = Statistic::with('user')->get();
+        $notifications = Notification::with('user')->get();
 
         return Inertia::render('Admin/Dashboard', [
             'statistics' => $statistics,

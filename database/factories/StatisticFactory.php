@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Customer;
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,10 +19,12 @@ class StatisticFactory extends Factory
      */
     public function definition()
     {
+        $userId = User::inRandomOrder()->value('id');
         $customerId = Customer::inRandomOrder()->value('id');
         $employeeId = Employee::inRandomOrder()->value('id');
 
         return [
+            'user_id' => $userId,
             'customer_id' => $customerId,
             'employee_id' => $employeeId,
             'sales_amount' => $this->faker->randomNumber(4), // ランダムな売り上げ金額

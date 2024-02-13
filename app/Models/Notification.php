@@ -9,10 +9,10 @@ class Notification extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'type',
-        'notiable_id',
-        'notifiable_type',
-        'data',
-    ];
+    protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

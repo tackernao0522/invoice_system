@@ -40,6 +40,10 @@ defineProps({
                                     <tr>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            名前
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             売上金額
                                         </th>
                                         <th scope="col"
@@ -50,6 +54,9 @@ defineProps({
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <tr v-for="statistic in statistics" :key="statistic.id">
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">{{ statistic.user.name }}</div>
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm font-medium text-gray-900">{{ statistic.sales_amount }}
                                             </div>
@@ -71,6 +78,10 @@ defineProps({
                                     <tr>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            名前
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             タイトル
                                         </th>
                                         <th scope="col"
@@ -82,7 +93,10 @@ defineProps({
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     <tr v-for="notification in notifications" :key="notification.id">
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm font-medium text-gray-900">{{ notification.title }}</div>
+                                            <div class="text-sm text-gray-900">{{ notification.user.name }}</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">{{ notification.title }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-500">{{ formatDate(notification.created_at) }}
