@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Estimate;
-use App\Models\Invoice;
+use App\Models\Notification;
+use App\Models\Statistic;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
@@ -18,7 +17,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Dashboard');
+        $statistics = Statistic::all();
+        $notifications = Notification::all();
+
+        return Inertia::render('Admin/Dashboard', [
+            'statistics' => $statistics,
+            'notifications' => $notifications,
+        ]);
     }
 
     /**
